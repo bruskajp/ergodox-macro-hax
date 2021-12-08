@@ -1,7 +1,7 @@
 import { newMacro, processAll } from "./macros";
 
 // Point this at wherever your config root folder is
-const SOURCE_DIR = "./test/moonlander_vimmy_source/keymap.c";
+const SOURCE_DIR = "./ConfigSource/moonlander_source/keymap.c";
 
 const macroExtensions = {
 
@@ -14,20 +14,20 @@ const macroExtensions = {
         .typeAlphanumeric("visual studio c\n"),*/
 
     // Git shortcuts
-    "add": newMacro(0)
+    "add": newMacro(1)
         .typeAlphanumeric("git add -A"),
-    "comm": newMacro(1)
+    "comm": newMacro(0)
         .typeAlphanumeric("git commit -m \"\"")
         .tapKey("X_LEFT"),
-    "push": newMacro(1)
+    "push": newMacro(0)
         .typeAlphanumeric("git push"),
 
     // Macros for Typescript mode, type full keywords beyond 4 characters
-    "cons": newMacro()
+    "cons": newMacro(0)
         .typeAlphanumeric("const "),
-    "retu": newMacro()
+    "retu": newMacro(0)
         .typeAlphanumeric("return "),
-    "whil": newMacro()
+    "whil": newMacro(0)
         .typeAlphanumeric("while ")
         // Open and closing parenthesis and brackets
         .withShift(newMacro().typeAlphanumeric("90 []"))
@@ -38,10 +38,10 @@ const macroExtensions = {
         .tapKey("X_LEFT")
         .tapKey("X_LEFT")
         .tapKey("X_LEFT"),
-    "regx": newMacro()
+    "regx": newMacro(0)
         .typeAlphanumeric("//g")
         .tapKey("X_LEFT"),
-    "if": newMacro()
+    "if": newMacro(0)
         .typeAlphanumeric("if ")
         // Open and closing parenthesis
         .withShift(newMacro().typeAlphanumeric("90 []"))
@@ -52,7 +52,7 @@ const macroExtensions = {
         .tapKey("X_LEFT")
         .tapKey("X_LEFT")
         .tapKey("X_LEFT"),
-    "elif": newMacro()
+    "elif": newMacro(0)
         .typeAlphanumeric("else if ")
         // Open and closing parenthesis
         .withShift(newMacro().typeAlphanumeric("90 []"))
@@ -63,16 +63,16 @@ const macroExtensions = {
         .tapKey("X_LEFT")
         .tapKey("X_LEFT")
         .tapKey("X_LEFT"),
-    "else": newMacro()
+    "else": newMacro(0)
         .typeAlphanumeric("else ")
         // Open and closing parenthesis
         .withShift(newMacro().tapKey("X_LBRACKET").tapKey("X_RBRACKET"))
         .tapKey("X_LEFT")
         .tapKey("X_ENTER"),
-    "expo": newMacro()
+    "expo": newMacro(0)
         .typeAlphanumeric("export "),
     // .forEach((el) => {})
-    "fore": newMacro()
+    "fore": newMacro(0)
         .typeAlphanumeric(".forEach")
         .withShift(newMacro().typeAlphanumeric("e"))
         .typeAlphanumeric("ach")
@@ -91,7 +91,7 @@ const macroExtensions = {
         .withShift(newMacro().tapKey("X_LBRACKET").tapKey("X_RBRACKET"))
         .tapKey("X_LEFT")
         .tapKey("X_ENTER"),
-    "map": newMacro()
+    "map": newMacro(0)
         .typeAlphanumeric(".map")
         // Open and closing parenthesis
         .withShift(newMacro().typeAlphanumeric("90"))
@@ -107,7 +107,7 @@ const macroExtensions = {
         .withShift(newMacro().tapKey("X_LBRACKET").tapKey("X_RBRACKET"))
         .tapKey("X_LEFT")
         .typeAlphanumeric("\nreturn "),
-    "filt": newMacro()
+    "filt": newMacro(0)
         .tapKey("X_DOT")
         .typeAlphanumeric("filter")
         // Open and closing parenthesis
@@ -123,7 +123,7 @@ const macroExtensions = {
         .withShift(newMacro().typeAlphanumeric(" []"))
         .tapKey("X_LEFT")
         .typeAlphanumeric("\nreturn "),
-    "func": newMacro()
+    "func": newMacro(0)
         .typeAlphanumeric("function ")
         .withShift(newMacro().typeAlphanumeric("90 []"))
         .tapKey("X_LEFT")
@@ -134,26 +134,26 @@ const macroExtensions = {
         .tapKey("X_LEFT")
         .tapKey("X_LEFT")
         .withShift(newMacro().typeAlphanumeric("; ")),
-    "type": newMacro()
+    "type": newMacro(0)
         .typeAlphanumeric("type "),
-    "awai": newMacro()
+    "awai": newMacro(0)
         .typeAlphanumeric("await "),
-    "asyn": newMacro()
+    "asyn": newMacro(0)
         .typeAlphanumeric("async "),
-    "bool": newMacro()
+    "bool": newMacro(0)
         .typeAlphanumeric("boolean"),
-    "inte": newMacro()
+    "inte": newMacro(0)
         .typeAlphanumeric("interface "),
-    "date": newMacro()
+    "date": newMacro(0)
         .typeAlphanumeric("Date"),
-    "prom": newMacro()
+    "prom": newMacro(0)
         // Type a capital P
         .typeAlphanumeric("Promise")
         // Shift for a <>
         .withShift(newMacro().tapKey("X_COMMA").tapKey("X_DOT"))
         .tapKey("X_LEFT"),
-    "numb": newMacro().typeAlphanumeric("number"),
-    "stri": newMacro().typeAlphanumeric("string"),
+    "numb": newMacro(0).typeAlphanumeric("number"),
+    "stri": newMacro(0).typeAlphanumeric("string"),
 }
 
 processAll(macroExtensions, SOURCE_DIR)
