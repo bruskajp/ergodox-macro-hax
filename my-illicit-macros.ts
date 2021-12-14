@@ -14,13 +14,71 @@ const macroExtensions = {
         .typeAlphanumeric("visual studio c\n"),*/
 
     // Git shortcuts
-    "add": newMacro(1)
+    "gstat": newMacro(1)
+        .typeAlphanumeric("git status"),
+    "gadd": newMacro(1)
         .typeAlphanumeric("git add -A"),
-    "comm": newMacro(0)
-        .typeAlphanumeric("git commit -m \"\"")
+    "gcomm": newMacro(1)
+        .typeAlphanumeric("git commit -am \"\"")
         .tapKey("X_LEFT"),
-    "push": newMacro(0)
+    "gpush": newMacro(1)
         .typeAlphanumeric("git push"),
+
+    // Vim shortcuts
+    "vrnam": newMacro(1)
+        .tapKey("X_ESCAPE")
+        .withShift(newMacro().typeAlphanumeric(";5"))
+        .typeAlphanumeric("s///g")
+        .tapKey("X_LEFT")
+        .tapKey("X_LEFT")
+        .tapKey("X_LEFT"),
+
+    // Generic coding macros
+    "todo": newMacro(1)
+        .typeAlphanumeric("TODO")
+        .withShift(newMacro().typeAlphanumeric("; ")),
+    "jpb": newMacro(1)
+        .typeAlphanumeric("JPB")
+        .withShift(newMacro().typeAlphanumeric("; ")),
+    "spc2": newMacro(1)
+        .typeAlphanumeric("  ")
+        .tapKey("X_LEFT"),
+    "entr2": newMacro(1)
+        .tapKey("X_ENTER")
+        .tapKey("X_UP")
+        .tapKey("X_END")
+        .tapKey("X_ENTER"),
+    "up10": newMacro(1)
+        .tapKey("X_UP").tapKey("X_UP").tapKey("X_UP").tapKey("X_UP").tapKey("X_UP")
+        .tapKey("X_UP").tapKey("X_UP").tapKey("X_UP").tapKey("X_UP").tapKey("X_UP"),
+    "dn10": newMacro(1)
+        .tapKey("X_DOWN").tapKey("X_DOWN").tapKey("X_DOWN").tapKey("X_DOWN").tapKey("X_DOWN")
+        .tapKey("X_DOWN").tapKey("X_DOWN").tapKey("X_DOWN").tapKey("X_DOWN").tapKey("X_DOWN"),
+
+    // C Macros
+    "clmb": newMacro(1)
+        .typeAlphanumeric("[]")
+        .withShift(newMacro().typeAlphanumeric("90 [  ]"))
+        .tapKey("X_LEFT").tapKey("X_LEFT"),
+    "cclas": newMacro(1) // TODO: Have this make constructor too
+        .typeAlphanumeric("class  ")
+        .withShift(newMacro().typeAlphanumeric("[]")).tapKey("X_LEFT")
+        .tapKey("X_ENTER").tapKey("X_UP").tapKey("X_END").tapKey("X_ENTER")
+        .typeAlphanumeric("public").withShift(newMacro().typeAlphanumeric(";"))
+        .tapKey("X_ENTER").typeAlphanumeric(" ").tapKey("X_BSPACE")
+        .tapKey("X_ENTER")
+        .typeAlphanumeric("private").withShift(newMacro().typeAlphanumeric(";"))
+        .tapKey("X_ENTER").typeAlphanumeric(" ").tapKey("X_BSPACE")
+        .tapKey("X_UP").tapKey("X_UP").tapKey("X_UP").tapKey("X_UP")
+        .tapKey("X_END").tapKey("X_LEFT").tapKey("X_LEFT"),
+    "cmain": newMacro(1)
+        .typeAlphanumeric("int main")
+        .withShift(newMacro().typeAlphanumeric("90")).tapKey("X_LEFT")
+        .typeAlphanumeric("int argc, char ")
+        .withShift(newMacro().typeAlphanumeric("88"))
+        .typeAlphanumeric("argv").tapKey("X_RIGHT")
+        .withShift(newMacro().typeAlphanumeric("[]")).tapKey("X_LEFT")
+        .tapKey("X_ENTER").tapKey("X_UP").tapKey("X_END").tapKey("X_ENTER"),
 
     // Macros for Typescript mode, type full keywords beyond 4 characters
     "cons": newMacro(0)
@@ -29,7 +87,7 @@ const macroExtensions = {
         .typeAlphanumeric("return "),
     "whil": newMacro(0)
         .typeAlphanumeric("while ")
-        // Open and closing parenthesis and brackets
+        // Open and closing parenthesis and brack;ets
         .withShift(newMacro().typeAlphanumeric("90 []"))
         .tapKey("X_LEFT")
         .tapKey("X_ENTER")
