@@ -25,10 +25,11 @@ sed -i '' -e 's/#include "keymap_/\/\/#include "keymap_/g' ConfigSource/moonland
 sed -i '' -e 's/extern bool g_suspend_state;/\/\/extern bool g_suspend_state;/g' ConfigSource/moonlander_source/keymap.c
 sed -i '' -e 's/g_suspend_state || //g' ConfigSource/moonlander_source/keymap.c
 
+echo "Compiling new firmware"
 cp ConfigSource/moonlander_source/config.h ~/qmk_firmware/keyboards/moonlander/keymaps/macrohax/config.h
 cp ConfigSource/moonlander_source/keymap.c ~/qmk_firmware/keyboards/moonlander/keymaps/macrohax/keymap.c
 cp ConfigSource/moonlander_source/rules.mk ~/qmk_firmware/keyboards/moonlander/keymaps/macrohax/rules.mk
-qmk compile -j 0 -km macrohax
+qmk compile -j 0 -km macrohax > /dev/null
 
 echo "Flashing new firmware"
 wally-cli ~/qmk_firmware/.build/moonlander_macrohax.bin
