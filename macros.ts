@@ -19,11 +19,11 @@ export interface MacroBuilder {
     expectedReplacements: number,
 }
 
-export const newMacro: (expectedReplacementCount?: number) => MacroBuilder = (erc: number = 1) => {
+export const newMacro: (expectedReplacementCount?: number) => MacroBuilder = (erc: number = 0) => {
     const commands: (() => string)[] = []
     const self: MacroBuilder = {
         expectedReplacements: erc,
-        tapKey: (rawKey: string, msDelayAfter: number) => {
+        tapKey: (rawKey: string, msDelayAfter: number = 0) => {
             if (!rawKey.startsWith("X_")) {
                 throw new Error("rawKey must come from the underlying language thingy, maybe you meant X_" + rawKey.toUpperCase() + " or something?");
             }
@@ -34,7 +34,7 @@ export const newMacro: (expectedReplacementCount?: number) => MacroBuilder = (er
             return self;
         },
         // Works with a-z, 0-9, space and newline-as-enter
-        typeAlphanumeric: (strToType: string, msDelayBetweenStrokes: number = 30) => {
+        typeAlphanumeric: (strToType: string, msDelayBetweenStrokes: number = 0) => {
             for (let i = 0; i < strToType.length; i++) {
                 const char = strToType[i]
                 if (char !== char.toLowerCase()) {

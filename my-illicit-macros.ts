@@ -60,25 +60,60 @@ const macroExtensions = {
         .typeAlphanumeric("[]")
         .withShift(newMacro().typeAlphanumeric("90 [  ]"))
         .tapKey("X_LEFT").tapKey("X_LEFT"),
+    "cinc": newMacro(1)
+        .withShift(newMacro().typeAlphanumeric("3"))
+        .typeAlphanumeric("include ")
+        .withShift(newMacro().typeAlphanumeric("''"))
+        .tapKey("X_LEFT"),
     "cclas": newMacro(1) // TODO: Have this make constructor too
         .typeAlphanumeric("class  ")
         .withShift(newMacro().typeAlphanumeric("[]")).tapKey("X_LEFT")
         .tapKey("X_ENTER").tapKey("X_UP").tapKey("X_END").tapKey("X_ENTER")
         .typeAlphanumeric("public").withShift(newMacro().typeAlphanumeric(";"))
+        .tapKey("X_ENTER").typeAlphanumeric(" ").tapKey("X_BSPACE").tapKey("X_ENTER")
+            .tapKey("X_ENTER").tapKey("X_ENTER")
+        .typeAlphanumeric("protected").withShift(newMacro().typeAlphanumeric(";"))
         .tapKey("X_ENTER").typeAlphanumeric(" ").tapKey("X_BSPACE")
-        .tapKey("X_ENTER")
-        .typeAlphanumeric("private").withShift(newMacro().typeAlphanumeric(";"))
-        .tapKey("X_ENTER").typeAlphanumeric(" ").tapKey("X_BSPACE")
-        .tapKey("X_UP").tapKey("X_UP").tapKey("X_UP").tapKey("X_UP")
+        .tapKey("X_UP").tapKey("X_UP").tapKey("X_UP").tapKey("X_UP").tapKey("X_UP").tapKey("X_UP")
         .tapKey("X_END").tapKey("X_LEFT").tapKey("X_LEFT"),
     "cmain": newMacro(1)
         .typeAlphanumeric("int main")
         .withShift(newMacro().typeAlphanumeric("90")).tapKey("X_LEFT")
-        .typeAlphanumeric("int argc, char ")
-        .withShift(newMacro().typeAlphanumeric("88"))
-        .typeAlphanumeric("argv").tapKey("X_RIGHT")
-        .withShift(newMacro().typeAlphanumeric("[]")).tapKey("X_LEFT")
+        .typeAlphanumeric("int argc, char ").withShift(newMacro().typeAlphanumeric("88"))
+            .typeAlphanumeric("argv").tapKey("X_RIGHT")
+        .withShift(newMacro().typeAlphanumeric(" []")).tapKey("X_LEFT")
         .tapKey("X_ENTER").tapKey("X_UP").tapKey("X_END").tapKey("X_ENTER"),
+    "cif": newMacro(1)
+        .typeAlphanumeric("if")
+        .withShift(newMacro().typeAlphanumeric(" 90 ["))
+        .tapKey("X_ENTER").typeAlphanumeric(" ").tapKey("X_BSPACE")
+        .tapKey("X_ENTER").withShift(newMacro().typeAlphanumeric("]"))
+        .tapKey("X_UP").tapKey("X_UP")
+        .tapKey("X_END").tapKey("X_LEFT").tapKey("X_LEFT").tapKey("X_LEFT"),
+    "celif": newMacro(1)
+        .tapKey("X_END").typeAlphanumeric(" else if")
+        .withShift(newMacro().typeAlphanumeric(" 90 ["))
+        .tapKey("X_ENTER").typeAlphanumeric(" ").tapKey("X_BSPACE")
+        .tapKey("X_ENTER").withShift(newMacro().typeAlphanumeric("]"))
+        .tapKey("X_UP").tapKey("X_UP")
+        .tapKey("X_END").tapKey("X_LEFT").tapKey("X_LEFT").tapKey("X_LEFT"),
+    "celse": newMacro(1)
+        .tapKey("X_END").typeAlphanumeric(" else")
+        .withShift(newMacro().typeAlphanumeric(" []")).tapKey("X_LEFT")
+        .tapKey("X_ENTER").tapKey("X_UP").tapKey("X_END").tapKey("X_ENTER"),
+    "cfori": newMacro(1)
+        .typeAlphanumeric("for")
+        .withShift(newMacro().typeAlphanumeric(" 90")).tapKey("X_LEFT")
+        .typeAlphanumeric("size").withShift(newMacro().typeAlphanumeric("-"))
+            .typeAlphanumeric("t i=0; i").withShift(newMacro().typeAlphanumeric(",")).typeAlphanumeric("; ")
+            .withShift(newMacro().typeAlphanumeric("==")).typeAlphanumeric("i")
+        .tapKey("X_END").withShift(newMacro().typeAlphanumeric(" ["))
+        .tapKey("X_ENTER").typeAlphanumeric(" ").tapKey("X_BSPACE")
+        .tapKey("X_ENTER").withShift(newMacro().typeAlphanumeric("]"))
+        .tapKey("X_UP").tapKey("X_UP")
+        .tapKey("X_END").tapKey("X_LEFT").tapKey("X_LEFT").tapKey("X_LEFT").tapKey("X_LEFT")
+            .tapKey("X_LEFT").tapKey("X_LEFT").tapKey("X_LEFT").tapKey("X_LEFT"),
+
 
     // Macros for Typescript mode, type full keywords beyond 4 characters
     "cons": newMacro(0)
